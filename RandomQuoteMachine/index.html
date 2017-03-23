@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quote Machine</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body{
+				margin:15%;
+			}
+		</style>
+		<script type="text/javascript">
+			function getRandomColor(){
+				var color = "#";
+				var count = 6;
+				for(var i = 0;i<6;i++){
+					var value = Math.floor(Math.random()*9)+1;
+					color += value;
+				}
+				return color;
+			}
+
+			$(document).ready(function(){
+				$("#new-quote").on("click",function(){
+					$.ajax({
+						url: "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=movies",
+						type: 'GET', 
+						data: {},
+						dataType: 'json',
+						success: function(content){
+							quote = content.quote
+							author = content.author
+							$("#quote").html("<em>"+quote+"</em>");
+							$("#author").html(author)
+							var color = getRandomColor();
+							console.log(color);
+							$("body").css("background-color",color);
+							$(".btn").css("background-color",color);
+						},
+						error: function(err) { alert(err); },
+						beforeSend: function(xhr) {
+			    						xhr.setRequestHeader("X-Mashape-Authorization", "9aP3uOlqzSmshOf7JEEjkmxlRa8bp16F79yjsnmLrPVCSNEIkF");
+			    					}
+					});
+				});
+				
+				$("#tweet").on("click",function(){
+					window.open('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + quote + '" ' + author))
+				});
+			});
+		</script>
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="jumbotron">
+				<blockquote class="text-center">
+					<b><h2 id="quote"></h2></b>
+				</blockquote>
+				<div class="row text-center">
+					<div class="col-md-6">
+						<input type="button" id="tweet" class="btn btn-default" value="Tweet"/>
+					</div>
+					<div class="col-md-6">
+						<input type ="button" id='new-quote' class="btn btn-default" value="Quote"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
