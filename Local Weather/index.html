@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Local weather</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<style type="text/css">
+			body{
+				background-color: black;
+				color: green;
+			}
+		</style>
+
+		<script type="text/javascript">
+			$.getJSON("http://ipinfo.io").done(function(response){
+				var geoCoords = response.loc.split(',');
+				var API_KEY = '078d22a4af65501c82c620dca2e5c78a';
+				var url = "http://api.openweathermap.org/data/2.5/weather?lat="+geoCoords[0]+"&lon="+geoCoords[1]+"&appid="+API_KEY;
+				$.getJSON(url).done(function(data){
+					var tempDetails = data.main;
+					var weatherDetails = data.weather[0].description;
+					var tempKeys = Object.keys(tempDetails);
+					for(var i = 0;i<tempKeys.length;i++){
+						$("#headers").append("<li class='list-group-item'>" + tempKeys[i] + "</li>");
+						$("#temp").append("<li class='list-group-item'>" + Math.round(tempDetails[tempKeys[i]])+"</li>");
+					}
+					$(".desc").html("<em><h3>"+weatherDetails+"</h3></em>")
+				});
+			});			
+		</script>
+
+	</head>
+	<body>
+		<div class="container text-center">
+			<div class="jumbotron">
+				<h1>Weather</h1>
+				<div class="desc">
+					
+				</div>
+				<div class="row">
+					<div class="well col-md-12">
+						<h3>Temperature details</h3>
+						<div class="col-md-6">
+							<ul class="list-group" id="headers"></ul>
+						</div>
+
+						<div class="col-md-6">
+							<ul class="list-group" id="temp"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+</html>
