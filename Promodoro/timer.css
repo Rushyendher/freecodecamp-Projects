@@ -1,0 +1,32 @@
+body{
+	background-color: black;
+}
+h1{
+	color: orange;
+	font-family:Courier New;
+	font-size: 100px;
+}
+p{
+	color: green;
+	font-size: 20px;
+}
+.session{
+	display: flex;
+}
+.btn{
+	margin: 5px;
+}
+#break_len_value,#session_len_value{
+	color: orange;
+	font-size: 20px;
+}
+#header{
+	font-family:Georgia;
+	font-size: 50px;
+	color: green;
+}
+#timer_value{
+	font-family:Georgia;
+	font-size: 100px;
+	color: orange;				
+}

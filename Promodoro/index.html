@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Promodoro clock</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="promodoro.js"></script>
+		<link  type="text/css" rel="stylesheet" href="timer.css">>
+	</head>
+	<body>
+		<div class="container text-center">
+			<h1>Promodor Clock</h1>
+			<hr/>
+			<div class="row">
+				<div class="col-md-6">
+					<p><b>BREAK LENGTH</b></p>
+				</div>
+				<div class="col-md-6">
+					<p><b>SESSION LENGTH</b></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button class="btn btn-default" id="dec_break"><b>-</b></button>
+					<span id="break_len_value">5</span>
+					<button class="btn btn-default" id="inc_break"><b>+</b></button>
+				</div>
+				<div class="col-md-6">
+					<button class="btn btn-default" id="dec_session"><b>-</b></button>
+					<span id="session_len_value">25</span>
+					<button class="btn btn-default" id="inc_session"><b>+</b></button>
+				</div>
+			</div>
+			<br/>
+			<div id="time_div">
+				<h2 id="header">SESSION</h2>
+				<br/>
+				<b><h3 id="timer_value">25</h3></b>
+			</div>
+		</div>
+	</body>
+</html>
