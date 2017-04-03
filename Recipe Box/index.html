@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Recipe Box</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="recipe.js"></script>
+
+</head>
+
+<body>
+    <div class="container" ng-app="myApp" ng-controller="RecipeCtrl">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 ng-show="!recipeBox.length">No Recipes, Add Some to share</h2>
+                <table class="table table-striped" ng-show="recipeBox.length">
+                    <thead>
+                        <th>Recipe Name</th>
+                        <th>Ingreidents</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="recipe in recipeBox">
+                            <td>{{recipe.recipeName}}</td>
+                            <td>{{recipe.ingredients}}</td>
+                            <td><input type="button" value="Edit" ng-click="editRecipe(recipe)" class="btn btn-info" /></td>
+                            <td><input type="button" value="Delete" ng-click="removeRecipe(recipe)" class="btn btn-danger" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h3>Recipe</h3>
+                <input type="text" class="form-control" placeholder="Recipe name" ng-model="recipeName" />
+                <h3>Ingreidents</h3>
+                <input type="text" class="form-control" placeholder="Ingreidents" ng-model="ingredient" />
+                <br/>
+                <input type="button" class="btn btn-primary" value="Add Recipe" ng-click="addRecipe(recipeName,ingredient)" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
