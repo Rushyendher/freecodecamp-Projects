@@ -5,4 +5,12 @@ app.controller("Top100Campers",function($scope,$http){
 		console.log(response);
 		$scope.details = response.data;
 	});
+
+	$scope.columnName = '-recent';
+	$scope.reverseSort = false;
+
+	$scope.sortColumn = function(column){
+		$scope.reverseSort = ($scope.columnName == column) ? !$scope.reverseSort : false;
+		$scope.columnName = column;
+	}
 });

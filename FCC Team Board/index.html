@@ -24,11 +24,11 @@
           <thead>
             <th>#</th>
             <th>Camper Name</th>
-            <th>Points in past 30 days</th>
-            <th>All time points</th>
+            <th ng-click="sortColumn('recent')">Points in past 30 days</th>
+            <th ng-click="sortColumn('alltime')">All time points</th>
           </thead>
           <tbody>
-            <tr ng-repeat="about in details">
+            <tr ng-repeat="about in details | orderBy: columnName : reverseSort">
               <td>{{$index+1}}</td>
               <td>
                 <img ng-src={{about.img}}/>
