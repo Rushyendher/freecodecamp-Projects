@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>LeaderBoard</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+      img{
+        width:20px;
+        height:20px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container" ng-controller="Top100Campers" ng-app="top100">
+      <div class="table-responsive">
+        <table  class="table">
+          <thead>
+            <th>#</th>
+            <th>Camper Name</th>
+            <th>Points in past 30 days</th>
+            <th>All time points</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="about in details">
+              <td>{{$index+1}}</td>
+              <td>
+                <img ng-src={{about.img}}/>
+                {{about.username}}
+              </td>
+              <td>{{about.recent}}</td>
+              <td id="alltime">{{about.alltime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="board.js"></script>
+
+  </body>
+</html>
